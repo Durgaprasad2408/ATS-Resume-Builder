@@ -263,21 +263,22 @@ const ResumeBuilder = () => {
           <p className="text-gray-600">Create an ATS-friendly resume to help you land your dream job</p>
         </header>
 
-        <div className="flex flex-col md:flex-row gap-4">
-          {/* Form Section */}
-          <div className="space-y-4 overflow-y-auto max-h-[calc(100vh-140px)] pr-2  ">
+        <div className="resume-container">
+          <div className="form-container">
             <PersonalInfoSection
               personalInfo={resumeData.personalInfo}
               updatePersonalInfo={updatePersonalInfo}
               isOpen={openSections.personalInfo}
               toggleOpen={() => toggleSection('personalInfo')}
             />
+            
             <SummarySection
               summary={resumeData.summary}
               updateSummary={updateSummary}
               isOpen={openSections.summary}
               toggleOpen={() => toggleSection('summary')}
             />
+            
             <EducationSection
               education={resumeData.education}
               updateEducation={updateEducation}
@@ -286,6 +287,7 @@ const ResumeBuilder = () => {
               isOpen={openSections.education}
               toggleOpen={() => toggleSection('education')}
             />
+            
             <ExperienceSection
               experience={resumeData.experience}
               updateExperience={updateExperience}
@@ -294,6 +296,7 @@ const ResumeBuilder = () => {
               isOpen={openSections.experience}
               toggleOpen={() => toggleSection('experience')}
             />
+            
             <ProjectsSection
               projects={resumeData.projects}
               updateProject={updateProject}
@@ -302,12 +305,14 @@ const ResumeBuilder = () => {
               isOpen={openSections.projects}
               toggleOpen={() => toggleSection('projects')}
             />
+            
             <SkillsSection
               skills={resumeData.skills}
               updateSkills={updateSkills}
               isOpen={openSections.skills}
               toggleOpen={() => toggleSection('skills')}
             />
+            
             <CertificationsSection
               certifications={resumeData.certifications}
               updateCertification={updateCertification}
@@ -316,13 +321,14 @@ const ResumeBuilder = () => {
               isOpen={openSections.certifications}
               toggleOpen={() => toggleSection('certifications')}
             />
+            
             <HobbiesSection
               hobbies={resumeData.hobbies}
               updateHobbies={updateHobbies}
               isOpen={openSections.hobbies}
               toggleOpen={() => toggleSection('hobbies')}
             />
-
+            
             <div className="mt-6 flex justify-center">
               <button
                 className="px-6 py-3 bg-resume-purple text-white rounded-lg font-medium flex items-center hover:bg-resume-darkPurple transition-colors"
@@ -334,29 +340,30 @@ const ResumeBuilder = () => {
             </div>
           </div>
 
-          {/* Resume Preview */}
-          <div className="bg-white rounded-lg shadow-md p-4 h-full max-h-[calc(100vh-140px)] overflow-y-auto" id="resume-preview">
-            <div className="mb-4 flex justify-between items-center">
-              <h2 className="text-xl font-semibold text-resume-darkPurple">Resume Preview</h2>
-              <div className="flex space-x-2">
-                <button 
-                  className="p-2 text-resume-purple hover:bg-resume-lightPurple rounded-full transition-colors"
-                  onClick={printResume}
-                  aria-label="Print resume"
-                >
-                  <Printer size={20} />
-                </button>
-                <button 
-                  className="p-2 text-resume-purple hover:bg-resume-lightPurple rounded-full transition-colors"
-                  onClick={downloadResume}
-                  aria-label="Download resume"
-                >
-                  <Download size={20} />
-                </button>
+          <div className="preview-container" id="resume-preview">
+            <div className="bg-white rounded-lg shadow-md p-4 sticky top-8">
+              <div className="mb-4 flex justify-between items-center">
+                <h2 className="text-xl font-semibold text-resume-darkPurple">Resume Preview</h2>
+                <div className="flex space-x-2">
+                  <button 
+                    className="p-2 text-resume-purple hover:bg-resume-lightPurple rounded-full transition-colors"
+                    onClick={printResume}
+                    aria-label="Print resume"
+                  >
+                    <Printer size={20} />
+                  </button>
+                  <button 
+                    className="p-2 text-resume-purple hover:bg-resume-lightPurple rounded-full transition-colors"
+                    onClick={downloadResume}
+                    aria-label="Download resume"
+                  >
+                    <Download size={20} />
+                  </button>
+                </div>
               </div>
-            </div>
-            <div id="resume-content">
-              <ResumePreview resumeData={resumeData} />
+              <div className="overflow-auto max-h-[calc(100vh-160px)]">
+                <ResumePreview resumeData={resumeData} />
+              </div>
             </div>
           </div>
         </div>
